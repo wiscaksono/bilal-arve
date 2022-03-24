@@ -7,7 +7,7 @@ export default function Navbar() {
         <Link href="#" passHref>
           Home
         </Link>
-        <Link href="about" passHref>
+        <Link href="#about" passHref>
           About
         </Link>
         <div>
