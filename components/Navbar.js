@@ -4,21 +4,21 @@ export default function Navbar() {
   return (
     <section className="wrapper">
       <nav className="flex gap-[42.53px] justify-center items-center mt-[84px]">
-        <Link href="#" passHref>
+        <a href="#" passHref>
           Home
-        </Link>
-        <Link href="#about" passHref>
+        </a>
+        <a href="#about" passHref>
           About
-        </Link>
+        </a>
         <div>
           <img src="arve.svg" alt="" />
         </div>
-        <Link href="portofolio" passHref>
+        <a href="#portofolio" passHref>
           Work
-        </Link>
-        <Link href="contact" passHref>
+        </a>
+        <a href="#contact" passHref>
           Contact
-        </Link>
+        </a>
       </nav>
     </section>
   );

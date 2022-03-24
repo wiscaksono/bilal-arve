@@ -8,7 +8,7 @@ export default function Home() {
       <section id="home">
         <div className="min-h-screen relative bg-purple-wave bg-bottom bg-repeat-x">
           <div className="absolute top-[44px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="flex items-center justify-center gap-[47px] ">
+            <div className="flex items-center justify-center gap-[47px] text-[#432261]">
               <a href="#">Home</a>
               <a href="#about">About</a>
               <a
@@ -93,24 +93,26 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-[24px]">
                     <div>
-                      <img src="work.svg" alt="" />
+                      <img src="project.svg" alt="" />
                     </div>
                     <div className="text-white">
                       <p className="text-[15px] -mb-[15px] mt-[10px]">
-                        Work Experience
+                        Project Completed
                       </p>
-                      <h5 className="font-semibold text-[36px]">4 Years</h5>
+                      <h5 className="font-semibold text-[36px]">400+</h5>
                     </div>
                   </div>
                   <div className="flex items-center gap-[24px]">
                     <div>
-                      <img src="work.svg" alt="" />
+                      <img src="email.svg" alt="" />
                     </div>
                     <div className="text-white">
                       <p className="text-[15px] -mb-[15px] mt-[10px]">
-                        Work Experience
+                        Contact
                       </p>
-                      <h5 className="font-semibold text-[36px]">4 Years</h5>
+                      <h5 className="font-semibold text-[36px]">
+                        bilalarve@gmail.com
+                      </h5>
                     </div>
                   </div>
                 </div>
@@ -225,7 +227,7 @@ export default function Home() {
             <a href="https://www.instagram.com/bilalarve/" target="_blank">
               <img src="instagram.svg" alt="" />
             </a>
-            <a href="#" target="_blank">
+            <a href="mailto:bilalarve@gmail.com" target="_blank">
               <img src="email-footer.svg" alt="" />
             </a>
             <a href="https://dribbble.com/Arve" target="_blank">
