@@ -1,8 +1,20 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-
+import MyModal from "../components/Modal";
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
 export default function Home() {
+  let [isOpen, setIsOpen] = useState(true);
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
   return (
     <>
       <section id="home">
@@ -64,7 +76,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section id="about" className="relative">
         <div className="min-h-screen bg-gradient-to-t from-[#744BFF] to-[#9A89FF] relative">
           <div>
@@ -138,7 +149,6 @@ export default function Home() {
           <img src="pot.svg" alt="" />
         </div>
       </section>
-
       <section id="portofolio">
         <div className="min-h-screen">
           <div>
@@ -193,7 +203,6 @@ export default function Home() {
 
           <div className="items-center justify-center flex mt-[15px]">
             <button className="bg-gradient-to-tr from-[#744BFF] to-[#A69DFF] rounded-full">
-              <div></div>
               <a
                 href="#"
                 className="py-[12px] px-[18px] block text-[20px] text-white font-light"
@@ -204,7 +213,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section
         className="bg-gradient-to-t from-[#432261] to-[#7436AE] min-h-screen relative"
         id="contact"
@@ -214,15 +222,11 @@ export default function Home() {
             if you love and interesting with my work lets collaboration and let
             me turn your idea into the marvelous illustration
           </h1>
-
-          <button className=" bg-gradient-to-tr from-[#744BFF] to-[#A69DFF] rounded-full">
-            <div className="px-[24px] py-[16px] flex items-center gap-[20px]">
-              <a href="#" className="font-medium text-[24px] text-white">
-                Let’s work together
-              </a>
-              <img src="email-btn.svg" alt="" />
-            </div>
-          </button>
+          <button
+            className=" bg-gradient-to-tr from-[#744BFF] to-[#A69DFF] rounded-full"
+            onClick={() => setIsOpen(!isOpen)}
+          ></button>
+          <MyModal>:wave</MyModal>
           <div className="flex gap-[35px]">
             <a href="https://www.instagram.com/bilalarve/" target="_blank">
               <img src="instagram.svg" alt="" />
