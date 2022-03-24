@@ -90,12 +90,19 @@ export default function Home() {
       ease: "easeNone",
       repeat: -1,
     });
+    gsap.from(".bawahan", {
+      duration: 1,
+      delay: 0.5,
+      y: 100,
+      opacity: 0,
+      ease: "power4",
+    });
   });
 
   return (
     <>
       <section id="home">
-        <div className="min-h-screen relative bg-purple-wave bg-bottom bg-repeat-x">
+        <div className="min-h-screen relative bg-purple-wave bg-bottom bg-repeat-x bawahan">
           <div className="absolute top-[44px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 navbar">
             <div className="flex items-center justify-center gap-[47px] text-[#432261]">
               <a href="#">Home</a>
@@ -147,7 +154,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="about" className="relative">
+      <section id="about" className="relative bawahan">
         <div className="min-h-screen bg-gradient-to-t from-[#744BFF] to-[#9A89FF] relative">
           <div>
             <div className="flex items-center justify-center flex-col">
@@ -220,14 +227,14 @@ export default function Home() {
               <div className="">
                 <img src="pot.svg" alt="" />
               </div>
-              <div className="absolute right-0 bottom-[50px]">
+              <div className="absolute right-0 bottom-[50px] animate-bounce">
                 <img src="pot.svg" alt="" />
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section id="portofolio">
+      <section id="portofolio bawahan">
         <div className="min-h-screen">
           <div>
             <h1 className="text-[64px] font-medium text-[#432261] text-center">
@@ -292,7 +299,7 @@ export default function Home() {
         </div>
       </section>
       <section
-        className="bg-gradient-to-t from-[#432261] to-[#7436AE] min-h-screen relative"
+        className="bg-gradient-to-t from-[#432261] to-[#7436AE] min-h-screen relative bawahan"
         id="contact"
       >
         <div
