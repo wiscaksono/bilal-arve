@@ -2,7 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import MyModal from "../components/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import gsap from "gsap";
+import { TextPlugin } from "gsap/dist/TextPlugin";
 
 export default function Home() {
   let [isOpen, setIsOpen] = useState(false);
@@ -14,12 +16,87 @@ export default function Home() {
   function openModal() {
     setIsOpen(true);
   }
+  useEffect(() => {
+    gsap.registerPlugin(TextPlugin);
+    gsap.from(".navbar", {
+      duration: 1,
+      delay: 0.5,
+      y: -100,
+      opacity: 0,
+      ease: "power4",
+    });
+    gsap.registerPlugin(TextPlugin);
+    gsap.to(".hero", {
+      duration: 1.5,
+      delay: 1,
+      text: "Turn your idea into",
+    });
+    gsap.to(".hero2", {
+      duration: 1.5,
+      delay: 2.5,
+      text: "a marvelous illustration",
+    });
+    gsap.from(".kiri", {
+      opacity: 0,
+      x: 300,
+      delay: 3.5,
+      duration: 1,
+    });
+    gsap.from(".triangle-kanan", {
+      opacity: 0,
+      x: 300,
+      delay: 3.2,
+      duration: 1,
+    });
+    gsap.from(".green-circle-kanan", {
+      opacity: 0,
+      delay: 3,
+      x: 300,
+      duration: 1,
+    });
+    gsap.from(".kite", {
+      opacity: 0,
+      delay: 2.8,
+      x: -300,
+      duration: 1,
+    });
+    gsap.from(".circle", {
+      opacity: 0,
+      delay: 3.8,
+      x: -300,
+      duration: 1,
+    });
+    gsap.from(".cross-spin", {
+      opacity: 0,
+      delay: 3.8,
+      x: -400,
+      duration: 1.2,
+    });
+    gsap.to(".cross", {
+      rotation: "360",
+      duration: 9,
+      ease: "easeNone",
+      repeat: -1,
+    });
+    gsap.to(".kotak", {
+      rotation: "360",
+      duration: 9,
+      ease: "easeNone",
+      repeat: -1,
+    });
+    gsap.to(".layangan", {
+      rotation: "360",
+      duration: 9,
+      ease: "easeNone",
+      repeat: -1,
+    });
+  });
 
   return (
     <>
       <section id="home">
         <div className="min-h-screen relative bg-purple-wave bg-bottom bg-repeat-x">
-          <div className="absolute top-[44px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute top-[44px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 navbar">
             <div className="flex items-center justify-center gap-[47px] text-[#432261]">
               <a href="#">Home</a>
               <a href="#about">About</a>
@@ -34,44 +111,38 @@ export default function Home() {
             </div>
           </div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white">
-            <h1 className="w-[870px]  text-center text-[#432261] font-medium text-[64px] ">
-              Turn your idea into a marvelous illustration
-            </h1>
+            <h1 className="w-[870px]  text-center text-[#432261] font-medium text-[64px] hero"></h1>
+            <h1 className="w-[870px]  text-center text-[#432261] font-medium text-[64px] hero2"></h1>
           </div>
           <div className="absolute w-[1166px] h-[273px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div>
-              <img
-                src="circle.svg"
-                alt=""
-                className="absolute left-0 top-1/2"
-              />
-              <img
-                src="kite.svg"
-                alt=""
-                className="absolute left-[154px] top-0"
-              />
-              <img
-                src="cross.svg"
-                alt=""
-                className="absolute left-[180px] bottom-0"
-              />
+              <div className="absolute left-0 top-1/2 circle">
+                <img src="circle.svg" alt="" className=" animate-bounce " />
+              </div>
+              <div className="absolute left-[154px] top-0  layangan">
+                <img src="kite.svg" alt="" className=" kite" />
+              </div>
+              <div className="absolute left-[180px] bottom-0 cross-spin">
+                <img src="cross.svg" alt="" className="cross" />
+              </div>
+              <div className="absolute right-0 top-1/2 animate-bounce">
+                <img
+                  src="triangle.svg"
+                  alt=""
+                  className="triangle-kanan animate-rotate"
+                />
+              </div>
 
-              <img
-                src="triangle.svg"
-                alt=""
-                className="absolute right-0 top-1/2"
-              />
-
-              <img
-                src="green-circle.svg"
-                alt=""
-                className="absolute right-[134px] top-0"
-              />
-              <img
-                src="square.svg"
-                alt=""
-                className="absolute right-[155px] bottom-0"
-              />
+              <div className="absolute right-[134px] top-0 animate-bounce animation-delay-100">
+                <img
+                  src="green-circle.svg"
+                  alt=""
+                  className="green-circle-kanan"
+                />
+              </div>
+              <div className="absolute right-[155px] bottom-0  kotak">
+                <img src="square.svg" alt="" className=" kiri" />
+              </div>
             </div>
           </div>
         </div>
@@ -226,7 +297,7 @@ export default function Home() {
       >
         <div
           className="
-        flex items-center justify-center flex-col gap-[44px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        flex items-center justify-center flex-col gap-[44px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50"
         >
           <h1 className="text-white text-[36px] w-[1112px] text-center">
             if you love and interesting with my work lets collaboration and let
