@@ -1,15 +1,25 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
     <>
-      <section>
+      <section id="home">
         <div className="min-h-screen relative bg-purple-wave bg-bottom bg-repeat-x">
-          <div className="absolute   left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <Navbar></Navbar>
+          <div className="absolute top-[44px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="flex items-center justify-center gap-[47px] ">
+              <a href="#">Home</a>
+              <a href="#about">About</a>
+              <a
+                href="https://tenor.com/view/fish-fish-sucking-eel-sucking-sucking-hotgrltae-gif-23577558"
+                target="_blank"
+              >
+                <img src="arve.svg" alt="" />
+              </a>
+              <a href="#portofolio">Work</a>
+              <a href="#contact">Contact</a>
+            </div>
           </div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white">
             <h1 className="w-[870px]  text-center text-[#432261] font-medium text-[64px] ">
@@ -55,7 +65,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about " className="relative">
+      <section id="about" className="relative">
         <div className="min-h-screen bg-gradient-to-t from-[#744BFF] to-[#9A89FF] relative">
           <div>
             <div className="flex items-center justify-center flex-col">
@@ -127,7 +137,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="work">
+      <section id="portofolio">
         <div className="min-h-screen">
           <div>
             <h1 className="text-[64px] font-medium text-[#432261] text-center">
@@ -181,6 +191,7 @@ export default function Home() {
 
           <div className="items-center justify-center flex mt-[15px]">
             <button className="bg-gradient-to-tr from-[#744BFF] to-[#A69DFF] rounded-full">
+              <div></div>
               <a
                 href="#"
                 className="py-[12px] px-[18px] block text-[20px] text-white font-light"
@@ -211,13 +222,13 @@ export default function Home() {
             </div>
           </button>
           <div className="flex gap-[35px]">
-            <a href="https://www.instagram.com/bilalarve/">
+            <a href="https://www.instagram.com/bilalarve/" target="_blank">
               <img src="instagram.svg" alt="" />
             </a>
-            <a href="#">
+            <a href="#" target="_blank">
               <img src="email-footer.svg" alt="" />
             </a>
-            <a href="https://dribbble.com/Arve">
+            <a href="https://dribbble.com/Arve" target="_blank">
               <img src="dribble.svg" alt="" />
             </a>
           </div>
