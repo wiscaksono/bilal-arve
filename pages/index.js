@@ -135,18 +135,25 @@ export default function Home() {
           <img src="bilal.png" alt="" className="w-full h-full" />
         </div>
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-[116px] bg-white "></div>
-        <div className="absolute bottom-[116px] left-0  ">
-          <img src="tanaman.svg" alt="" />
-        </div>
-        <div className="absolute bottom-[116px] right-0 ">
-          <img src="tanaman-kanan.png" alt="" />
-        </div>
-        <div className="absolute left-[251px] bottom-[500px]">
-          <img src="pot.svg" alt="" />
-        </div>
-
-        <div className="absolute right-[253px] bottom-[450px]">
-          <img src="pot.svg" alt="" />
+        <div className="w-[1836px] bottom-[116px] absolute left-1/2 transform -translate-x-1/2  ">
+          <div className="relative">
+            <div className="absolute bottom-0">
+              <img src="tanaman.svg" alt="" />
+            </div>
+            <div className="absolute bottom-0 right-0">
+              <img src="tanaman-kanan.png" alt="" />
+            </div>
+          </div>
+          <div className="absolute w-[1414px]  left-1/2 transform -translate-x-1/2 bottom-[350px] -translate-y-1/2">
+            <div className="relative">
+              <div className="">
+                <img src="pot.svg" alt="" />
+              </div>
+              <div className="absolute right-0 bottom-[50px]">
+                <img src="pot.svg" alt="" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section id="portofolio">
@@ -251,37 +258,37 @@ export default function Home() {
         <div className="absolute bottom-0 left-[369px]">
           <img src="brush.svg" alt="" />
         </div>
-        <div className="absolute top-[341px] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="w-[1257px] h-[274px] relative">
             <img
               src="kite.svg"
               alt=""
-              className="absolute top-0 left-[154px]"
+              className="absolute -top-[150px] left-[154px]"
             />
             <img
               src="circle.svg"
               alt=""
-              className="absolute bottom-1/2 left-0"
+              className="absolute top-[10px] left-0"
             />
             <img
               src="cross.svg"
               alt=""
-              className="absolute bottom-0 left-[180px]"
+              className="absolute bottom-[150px] left-[180px]"
             />
             <img
               src="green-circle.svg"
               alt=""
-              className="absolute top-0 right-[134px]"
+              className="absolute -top-[150px] right-[134px]"
             />
             <img
               src="triangle.svg"
               alt=""
-              className="absolute top-[125px] right-0"
+              className="absolute -top-[30px] right-0"
             />
             <img
               src="square.svg"
               alt=""
-              className="absolute bottom-0 right-[155px]"
+              className="absolute bottom-[110px] right-[155px]"
             />
           </div>
         </div>
