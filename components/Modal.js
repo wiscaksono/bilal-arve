@@ -2,7 +2,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 
 export default function MyModal() {
-  let [isOpen, setIsOpen] = useState(true);
+  let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
     setIsOpen(false);
@@ -29,7 +29,7 @@ export default function MyModal() {
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-10 overflow-y-auto bg-black/50 backdrop-blur-md transition-all"
+          className="fixed inset-0  overflow-y-auto bg-black/50 backdrop-blur-md transition-all z-50"
           onClose={closeModal}
         >
           <div className="min-h-screen px-4 text-center">
@@ -61,7 +61,14 @@ export default function MyModal() {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block   px-[120px] py-[86px]  overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-[22px]">
+              <div className="inline-block  px-[120px] py-[86px]  overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-[22px] relative">
+                <div className="absolute top-[41px] right-[41px]">
+                  <button type="button" onClick={closeModal}>
+                    <div className="w-[20px] h-[20px]">
+                      <img src="close.svg" alt="" className="w-full h-full" />
+                    </div>
+                  </button>
+                </div>
                 <div className="flex items-center justify-center flex-col">
                   <div className="mb-[24px]">
                     <img src="email-modal.png" alt="" />
@@ -86,7 +93,6 @@ export default function MyModal() {
                         <input
                           type="text"
                           className="w-full h-[41px] py-[10px] text-base font-normal text-[#341F87] bg-white bg-clip-padding border border-solid border-[#CFC9E5] rounded-[8px] transition ease-in-out  m-0  focus:text-[#341F87] focus:bg-white  focus:outline-none px-3 placeholder:text-[#CFC9E5] placeholder:text-sm "
-                          id="exampleInput7"
                           placeholder="Joe Mama"
                         />
                       </div>
@@ -97,7 +103,6 @@ export default function MyModal() {
                         <input
                           type="text"
                           className="w-full h-[41px] py-[10px] text-base font-normal text-[#341F87] bg-white bg-clip-padding border border-solid border-[#CFC9E5] rounded-[8px] transition ease-in-out  m-0  focus:text-[#341F87] focus:bg-white  focus:outline-none px-3 placeholder:text-[#CFC9E5]  placeholder:text-sm"
-                          id="exampleInput7"
                           placeholder="example@gmail.com"
                         />
                       </div>
@@ -108,8 +113,7 @@ export default function MyModal() {
                         <input
                           type="text"
                           className="w-full h-[41px] py-[10px] text-base font-normal text-[#341F87] bg-white bg-clip-padding border border-solid border-[#CFC9E5] rounded-[8px] transition ease-in-out  m-0  focus:text-[#341F87] focus:bg-white  focus:outline-none px-3 placeholder:text-[#CFC9E5]  placeholder:text-sm"
-                          id="exampleInput7"
-                          placeholder="Greative"
+                          placeholder="Google"
                         />
                       </div>
                     </div>
@@ -120,8 +124,8 @@ export default function MyModal() {
                       <textarea
                         name=""
                         id=""
-                        placeholder="Type apa yang u mau ...."
-                        className="w-full h-[205px] py-1.5 text-base  text-[#341F87] bg-white bg-clip-padding border border-solid border-[#CFC9E5] rounded-[8px] transition ease-in-out  m-0  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none px-3 placeholder:text-[#CFC9E5] placeholder:text-sm  resize-none"
+                        placeholder="Type yor message"
+                        className="w-full h-[205px] py-1.5 text-base  text-[#341F87] bg-white bg-clip-padding border border-solid border-[#CFC9E5] rounded-[8px] transition ease-in-out  m-0  focus:text-[#341F87] focus:bg-white  focus:outline-none px-3 placeholder:text-[#CFC9E5] placeholder:text-sm  resize-none"
                       ></textarea>
                     </div>
                   </div>

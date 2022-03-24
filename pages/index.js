@@ -2,10 +2,10 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import MyModal from "../components/Modal";
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { useState } from "react";
+
 export default function Home() {
-  let [isOpen, setIsOpen] = useState(true);
+  let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
     setIsOpen(false);
@@ -217,7 +217,10 @@ export default function Home() {
         className="bg-gradient-to-t from-[#432261] to-[#7436AE] min-h-screen relative"
         id="contact"
       >
-        <div className="flex items-center justify-center flex-col gap-[44px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div
+          className="
+        flex items-center justify-center flex-col gap-[44px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        >
           <h1 className="text-white text-[36px] w-[1112px] text-center">
             if you love and interesting with my work lets collaboration and let
             me turn your idea into the marvelous illustration
@@ -226,12 +229,12 @@ export default function Home() {
             className=" bg-gradient-to-tr from-[#744BFF] to-[#A69DFF] rounded-full"
             onClick={() => setIsOpen(!isOpen)}
           ></button>
-          <MyModal>:wave</MyModal>
+          <MyModal></MyModal>
           <div className="flex gap-[35px]">
             <a href="https://www.instagram.com/bilalarve/" target="_blank">
               <img src="instagram.svg" alt="" />
             </a>
-            <a href="mailto:bilalarve@gmail.com" target="_blank">
+            <a href="mailto:arve4me@gmail.com" target="_blank">
               <img src="email-footer.svg" alt="" />
             </a>
             <a href="https://dribbble.com/Arve" target="_blank">
