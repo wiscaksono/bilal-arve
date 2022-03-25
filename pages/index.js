@@ -2,9 +2,13 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import MyModal from "../components/Modal";
+import gsap, { Power3, TimelineMax } from "gsap";
 import { useEffect, useState } from "react";
-import gsap from "gsap";
 import { TextPlugin } from "gsap/dist/TextPlugin";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import SplitText from "../utils/Split3.min.js"
+
+gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
 export default function Home() {
   let [isOpen, setIsOpen] = useState(false);
@@ -17,93 +21,78 @@ export default function Home() {
     setIsOpen(true);
   }
   useEffect(() => {
-    gsap.registerPlugin(TextPlugin);
-    gsap.from(".navbar", {
+    const ease3 = Power3.easeOut;
+
+    // Section Home
+    const tl = new TimelineMax({ ease: ease3 });
+    tl.from(".bg-purple-wave", 1, { y: 300, opacity: 0 })
+      .from(".navbar", 0.5, { y: -100, opacity: 0 })
+      .to(".hero", 1, { delay: 1, opacity: 1, text: "Turn your idea into" })
+      .to(".hero2", 1.5, { delay: 2, opacity: 1, text: "a marvelous illustration" }, "-=2")
+      .from("#about", 0.5, { y: 100 }, '-=5');
+
+    const showIcon = new TimelineMax({ duration: 1 })
+    showIcon.from(".kotak", { opacity: 0, x: 300, delay: 3.5 }, 'img')
+      .from(".triangle-kanan", { opacity: 0, x: 300, delay: 3.2, }, 'img')
+      .from(".green-circle-kanan", { opacity: 0, delay: 3, x: 300 }, 'img')
+      .from(".layangan", { opacity: 0, delay: 2.8, x: -300 }, 'img')
+      .from(".circle", { opacity: 0, delay: 3.3, x: -300 }, 'img')
+      .from(".cross-spin", { opacity: 0, delay: 3.5, x: -400 }, 'img');
+
+    const bounce = new TimelineMax({ ease: ease3 })
+    bounce.to(".triangle-kanan", { y: -20, yoyo: true, duration: 2, repeat: -1 }, 'img')
+      .to(".green-circle-kanan", { y: -20, yoyo: true, duration: 2.5, repeat: -1 }, 'img')
+      .to(".circle", { y: -20, yoyo: true, duration: 3.5, repeat: -1 }, 'img')
+      .to('.kotak', { rotate: '360', duration: 5, repeat: -1 }, 'img')
+      .to('.cross-spin', { rotate: '-360', yoyo: true, duration: 4, repeat: -1 }, 'img')
+      .to('.layangan', { rotate: '360', duration: 8, repeat: -1 }, 'img');
+
+
+    // Section About
+    const split = new SplitText("#about-text", {
+      type: "lines",
+      linesClass: "lineChildren",
+    });
+
+    const splitParent = new SplitText("#about-text", {
+      type: "lines",
+      linesClass: "lineParent",
+    });
+
+    new gsap.timeline({
+      ease: ease3, scrollTrigger: {
+        trigger: "#about",
+        start: 'top bottom'
+      }
+    }).to(split.lines, {
       duration: 1,
-      delay: 0.5,
-      y: -100,
-      opacity: 0,
-      ease: "power4",
-    });
-    gsap.registerPlugin(TextPlugin);
-    gsap.to(".hero", {
-      duration: 1.5,
-      delay: 1,
-      text: "Turn your idea into",
-    });
-    gsap.to(".hero2", {
-      duration: 1.5,
-      delay: 2.5,
-      text: "a marvelous illustration",
-    });
-    gsap.from(".kiri", {
-      opacity: 0,
-      x: 300,
-      delay: 3.5,
-      duration: 1,
-    });
-    gsap.from(".triangle-kanan", {
-      opacity: 0,
-      x: 300,
-      delay: 3.2,
-      duration: 1,
-    });
-    gsap.from(".green-circle-kanan", {
-      opacity: 0,
-      delay: 3,
-      x: 300,
-      duration: 1,
-    });
-    gsap.from(".kite", {
-      opacity: 0,
-      delay: 2.8,
-      x: -300,
-      duration: 1,
-    });
-    gsap.from(".circle", {
-      opacity: 0,
-      delay: 3.8,
-      x: -300,
-      duration: 1,
-    });
-    gsap.from(".cross-spin", {
-      opacity: 0,
-      delay: 3.8,
-      x: -400,
-      duration: 1.2,
-    });
-    gsap.to(".cross", {
-      rotation: "360",
-      duration: 9,
-      ease: "easeNone",
-      repeat: -1,
-    });
-    gsap.to(".kotak", {
-      rotation: "360",
-      duration: 9,
-      ease: "easeNone",
-      repeat: -1,
-    });
-    gsap.to(".layangan", {
-      rotation: "360",
-      duration: 9,
-      ease: "easeNone",
-      repeat: -1,
-    });
-    gsap.from(".bawahan", {
-      duration: 1,
-      delay: 0.5,
-      y: 100,
-      opacity: 0,
-      ease: "power4",
-    });
+      y: 0,
+      opacity: 1,
+      stagger: 0.1,
+    })
+      .from(".plants", 1.5, { y: 1000 }, "-=2")
+      .from("#about-line", 0.5, {
+        y: 50, opacity: 0,
+      })
+      .from(".desc-about", 0.5, {
+        y: 50, opacity: 0, stagger: 0.2,
+      })
+      .from(".pot1", 1, { x: "-100%", scale: 0, y: 50 }, "-=1")
+      .from(".pot2", 1, { x: "100%", scale: 0, y: 50 }, "-=1.5")
+      .from(".img-bilal", 1, {
+        y: 100,
+        opacity: 0
+      }, '-=1');
+
+    new gsap.timeline({ ease: ease3 }).to(".pot1", 4, { y: -5, yoyo: true, repeat: -1 }).to(".pot2", 4, { y: -5, yoyo: true, repeat: -1 });
+
   });
 
   return (
     <>
       <section id="home">
-        <div className="min-h-screen relative bg-purple-wave bg-bottom bg-repeat-x bawahan">
-          <div className="absolute top-[44px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 navbar">
+        <div className="relative min-h-screen bg-bottom bg-repeat-x bg-purple-wave">
+          <div className="absolute top-[44px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 navbar opacity-100">
             <div className="flex items-center justify-center gap-[47px] text-[#432261]">
               <a href="#">Home</a>
               <a href="#about">About</a>
@@ -117,59 +106,59 @@ export default function Home() {
               <a href="#contact">Contact</a>
             </div>
           </div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white">
-            <h1 className="w-[870px]  text-center text-[#432261] font-medium text-[64px] hero"></h1>
-            <h1 className="w-[870px]  text-center text-[#432261] font-medium text-[64px] hero2"></h1>
+          <div className="absolute transform -translate-x-1/2 -translate-y-1/2 bg-white top-1/2 left-1/2">
+            <h1 className="w-[870px] opacity-0  text-center text-[#432261] font-medium text-[64px] hero"></h1>
+            <h1 className="w-[870px] opacity-0  text-center text-[#432261] font-medium text-[64px] hero2"></h1>
           </div>
           <div className="absolute w-[1166px] h-[273px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div>
-              <div className="absolute left-0 top-1/2 circle">
-                <img src="circle.svg" alt="" className=" animate-bounce " />
+              <div className="absolute left-0 top-1/2 ">
+                <img src="circle.svg" alt="circle" className="circle" />
               </div>
-              <div className="absolute left-[154px] top-0  layangan">
-                <img src="kite.svg" alt="" className=" kite" />
+              <div className="absolute left-[154px] top-0  ">
+                <img src="kite.svg" alt="" className="layangan" />
               </div>
-              <div className="absolute left-[180px] bottom-0 cross-spin">
-                <img src="cross.svg" alt="" className="cross" />
+              <div className="absolute left-[180px] bottom-0 cross-spin ">
+                <img src="cross.svg" alt="" className="cross-spin" />
               </div>
-              <div className="absolute right-0 top-1/2 animate-bounce">
+              <div className="absolute right-0 top-1/2 ">
                 <img
                   src="triangle.svg"
                   alt=""
-                  className="triangle-kanan animate-rotate"
+                  className="triangle-kanan"
                 />
               </div>
 
-              <div className="absolute right-[134px] top-0 animate-bounce animation-delay-100">
+              <div className="absolute right-[134px] top-0">
                 <img
                   src="green-circle.svg"
                   alt=""
                   className="green-circle-kanan"
                 />
               </div>
-              <div className="absolute right-[155px] bottom-0  kotak">
-                <img src="square.svg" alt="" className=" kiri" />
+              <div className="absolute right-[155px] bottom-0   ">
+                <img src="square.svg" alt="" className="kotak" />
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section id="about" className="relative bawahan">
+      <section id="about" className="relative bawahan overflow-hidden">
         <div className="min-h-screen bg-gradient-to-t from-[#744BFF] to-[#9A89FF] relative">
           <div>
-            <div className="flex items-center justify-center flex-col">
-              <h1 className="text-[64px] text-white font-light text-center leading-[76px] pt-[24px] mb-[27px]">
+            <div className="flex flex-col items-center justify-center">
+              <h1 id="about-text" className="text-[64px] text-white font-light text-center leading-[76px] pt-[24px] mb-[27px]">
                 Hello I am <br />
                 <span className="font-medium">Muhammad Bilal Arve</span>
               </h1>
-              <p className="text-[24px] text-white max-w-[1135px] text-center">
+              <p id="about-text" className="text-[24px] text-white max-w-[1135px] text-center">
                 I am an illustrator and i have 4 years experience. I really love
                 turn idea into a marvelous illustration and i love exploring
                 illustration style and colours combination
               </p>
-              <div className="bg-[#432261] rounded-full mt-[40px] shadow-lg">
+              <div id="about-line" className="bg-[#432261] rounded-full mt-[40px] shadow-lg">
                 <div className="py-[16px] px-[36px] flex items-center justify-center gap-[60px]">
-                  <div className="flex items-center gap-[24px]">
+                  <div className="flex items-center desc-about gap-[24px]">
                     <div>
                       <img src="work.svg" alt="" />
                     </div>
@@ -180,7 +169,7 @@ export default function Home() {
                       <h5 className="font-semibold text-[36px]">4 Years</h5>
                     </div>
                   </div>
-                  <div className="flex items-center gap-[24px]">
+                  <div className="flex items-center desc-about gap-[24px]">
                     <div>
                       <img src="project.svg" alt="" />
                     </div>
@@ -191,7 +180,7 @@ export default function Home() {
                       <h5 className="font-semibold text-[36px]">400+</h5>
                     </div>
                   </div>
-                  <div className="flex items-center gap-[24px]">
+                  <div className="flex items-center desc-about gap-[24px]">
                     <div>
                       <img src="email.svg" alt="" />
                     </div>
@@ -209,32 +198,32 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-[58px] left-1/2 transform -translate-x-1/2 w-[430px] h-[413.27px] z-10">
+        <div className="absolute bottom-[58px] left-1/2 transform -translate-x-1/2 w-[430px] h-[413.27px] z-10 img-bilal">
           <img src="bilal.png" alt="" className="w-full h-full" />
         </div>
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-[116px] bg-white "></div>
         <div className="w-[1836px] bottom-[116px] absolute left-1/2 transform -translate-x-1/2  ">
-          <div className="relative">
-            <div className="absolute bottom-0">
+          <div className="relative opacity-100">
+            <div className="absolute bottom-0 plants">
               <img src="tanaman.svg" alt="" />
             </div>
-            <div className="absolute bottom-0 right-0">
+            <div className="absolute bottom-0 right-0 plants">
               <img src="tanaman-kanan.png" alt="" />
             </div>
           </div>
           <div className="absolute w-[1414px]  left-1/2 transform -translate-x-1/2 bottom-[350px] -translate-y-1/2">
             <div className="relative">
-              <div className="">
+              <div className="absolute left-0 bottom-[40px] pot1">
                 <img src="pot.svg" alt="" />
               </div>
-              <div className="absolute right-0 bottom-[50px] animate-bounce">
+              <div className="absolute right-0 bottom-[50px] pot2">
                 <img src="pot.svg" alt="" />
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section id="portofolio bawahan">
+      <section id="portofolio">
         <div className="min-h-screen">
           <div>
             <h1 className="text-[64px] font-medium text-[#432261] text-center">
@@ -299,7 +288,7 @@ export default function Home() {
         </div>
       </section>
       <section
-        className="bg-gradient-to-t from-[#432261] to-[#7436AE] min-h-screen relative bawahan"
+        className="bg-gradient-to-t from-[#432261] to-[#7436AE] min-h-screen relative"
         id="contact"
       >
         <div
@@ -336,7 +325,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-[369px]">
           <img src="brush.svg" alt="" />
         </div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
           <div className="w-[1257px] h-[274px] relative">
             <img
               src="kite.svg"
