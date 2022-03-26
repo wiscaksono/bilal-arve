@@ -6,7 +6,7 @@ import gsap, { Power3, TimelineMax } from "gsap";
 import { useEffect, useState } from "react";
 import { TextPlugin } from "gsap/dist/TextPlugin";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import SplitText from "../utils/Split3.min.js"
+import SplitText from "../utils/Split3.min.js";
 
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
@@ -28,25 +28,47 @@ export default function Home() {
     tl.from(".bg-purple-wave", 1, { y: 300, opacity: 0 })
       .from(".navbar", 0.5, { y: -100, opacity: 0 })
       .to(".hero", 1, { delay: 1, opacity: 1, text: "Turn your idea into" })
-      .to(".hero2", 1.5, { delay: 2, opacity: 1, text: "a marvelous illustration" }, "-=2")
-      .from("#about", 0.5, { y: 100 }, '-=5');
+      .to(
+        ".hero2",
+        1.5,
+        { delay: 2, opacity: 1, text: "a marvelous illustration" },
+        "-=2"
+      )
+      .from("#about", 0.5, { y: 100 }, "-=5");
 
-    const showIcon = new TimelineMax({ duration: 1 })
-    showIcon.from(".kotak", { opacity: 0, x: 300, delay: 3.5 }, 'img')
-      .from(".triangle-kanan", { opacity: 0, x: 300, delay: 3.2, }, 'img')
-      .from(".green-circle-kanan", { opacity: 0, delay: 3, x: 300 }, 'img')
-      .from(".layangan", { opacity: 0, delay: 2.8, x: -300 }, 'img')
-      .from(".circle", { opacity: 0, delay: 3.3, x: -300 }, 'img')
-      .from(".cross-spin", { opacity: 0, delay: 3.5, x: -400 }, 'img');
+    const showIcon = new TimelineMax({ duration: 1 });
+    showIcon
+      .from(".kotak", { opacity: 0, x: 300, delay: 3.5 }, "img")
+      .from(".triangle-kanan", { opacity: 0, x: 300, delay: 3.2 }, "img")
+      .from(".green-circle-kanan", { opacity: 0, delay: 3, x: 300 }, "img")
+      .from(".layangan", { opacity: 0, delay: 2.8, x: -300 }, "img")
+      .from(".circle", { opacity: 0, delay: 3.3, x: -300 }, "img")
+      .from(".cross-spin", { opacity: 0, delay: 3.5, x: -400 }, "img");
 
-    const bounce = new TimelineMax({ ease: ease3 })
-    bounce.to(".triangle-kanan", { y: -20, yoyo: true, duration: 2, repeat: -1 }, 'img')
-      .to(".green-circle-kanan", { y: -20, yoyo: true, duration: 2.5, repeat: -1 }, 'img')
-      .to(".circle", { y: -20, yoyo: true, duration: 3.5, repeat: -1 }, 'img')
-      .to('.kotak', { rotate: '360', duration: 5, repeat: -1 }, 'img')
-      .to('.cross-spin', { rotate: '-360', yoyo: true, duration: 4, repeat: -1 }, 'img')
-      .to('.layangan', { rotate: '360', duration: 8, repeat: -1 }, 'img');
-
+    const bounce = new TimelineMax({ ease: ease3 });
+    bounce
+      .to(
+        ".triangle-kanan",
+        { y: -19, yoyo: true, duration: 2, repeat: -1 },
+        "img"
+      )
+      .to(
+        ".green-circle-kanan",
+        { y: -15, yoyo: true, duration: 2.5, repeat: -1 },
+        "img"
+      )
+      .to(".circle", { y: -12, yoyo: true, duration: 3.5, repeat: -1 }, "img")
+      .to(".kotak", { y: -22, yoyo: true, duration: 3.5, repeat: -1 }, "img")
+      .to(
+        ".cross-spin",
+        { y: -18, yoyo: true, duration: 3.5, repeat: -1 },
+        "img"
+      )
+      .to(
+        ".layangan",
+        { y: -12, yoyo: true, duration: 3.5, repeat: -1 },
+        "img"
+      );
 
     // Section About
     const split = new SplitText("#about-text", {
@@ -60,32 +82,43 @@ export default function Home() {
     });
 
     new gsap.timeline({
-      ease: ease3, scrollTrigger: {
+      ease: ease3,
+      scrollTrigger: {
         trigger: "#about",
-        start: 'top bottom'
-      }
-    }).to(split.lines, {
-      duration: 1,
-      y: 0,
-      opacity: 1,
-      stagger: 0.1,
+        start: "top bottom",
+      },
     })
+      .to(split.lines, {
+        duration: 1,
+        y: 0,
+        opacity: 1,
+        stagger: 0.1,
+      })
       .from(".plants", 1.5, { y: 1000 }, "-=2")
       .from("#about-line", 0.5, {
-        y: 50, opacity: 0,
+        y: 50,
+        opacity: 0,
       })
       .from(".desc-about", 0.5, {
-        y: 50, opacity: 0, stagger: 0.2,
+        y: 50,
+        opacity: 0,
+        stagger: 0.2,
       })
       .from(".pot1", 1, { x: "-100%", scale: 0, y: 50 }, "-=1")
       .from(".pot2", 1, { x: "100%", scale: 0, y: 50 }, "-=1.5")
-      .from(".img-bilal", 1, {
-        y: 100,
-        opacity: 0
-      }, '-=1');
+      .from(
+        ".img-bilal",
+        1,
+        {
+          y: 100,
+          opacity: 0,
+        },
+        "-=1"
+      );
 
-    new gsap.timeline({ ease: ease3 }).to(".pot1", 4, { y: -5, yoyo: true, repeat: -1 }).to(".pot2", 4, { y: -5, yoyo: true, repeat: -1 });
-
+    new gsap.timeline({ ease: ease3 })
+      .to(".pot1", 4, { y: -5, yoyo: true, repeat: -1 })
+      .to(".pot2", 4, { y: -5, yoyo: true, repeat: -1 });
   });
 
   return (
@@ -122,11 +155,7 @@ export default function Home() {
                 <img src="cross.svg" alt="" className="cross-spin" />
               </div>
               <div className="absolute right-0 top-1/2 ">
-                <img
-                  src="triangle.svg"
-                  alt=""
-                  className="triangle-kanan"
-                />
+                <img src="triangle.svg" alt="" className="triangle-kanan" />
               </div>
 
               <div className="absolute right-[134px] top-0">
@@ -143,20 +172,29 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="about" className="relative bawahan overflow-hidden">
+      <section id="about" className="relative overflow-hidden">
         <div className="min-h-screen bg-gradient-to-t from-[#744BFF] to-[#9A89FF] relative">
           <div>
             <div className="flex flex-col items-center justify-center">
-              <h1 id="about-text" className="text-[64px] text-white font-light text-center leading-[76px] pt-[24px] mb-[27px]">
+              <h1
+                id="about-text"
+                className="text-[64px] text-white font-light text-center leading-[76px] pt-[24px] mb-[27px]"
+              >
                 Hello I am <br />
                 <span className="font-medium">Muhammad Bilal Arve</span>
               </h1>
-              <p id="about-text" className="text-[24px] text-white max-w-[1135px] text-center">
+              <p
+                id="about-text"
+                className="text-[24px] text-white max-w-[1135px] text-center"
+              >
                 I am an illustrator and i have 4 years experience. I really love
                 turn idea into a marvelous illustration and i love exploring
                 illustration style and colours combination
               </p>
-              <div id="about-line" className="bg-[#432261] rounded-full mt-[40px] shadow-lg">
+              <div
+                id="about-line"
+                className="bg-[#432261] rounded-full mt-[40px] shadow-lg"
+              >
                 <div className="py-[16px] px-[36px] flex items-center justify-center gap-[60px]">
                   <div className="flex items-center desc-about gap-[24px]">
                     <div>
@@ -198,13 +236,13 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-[58px] left-1/2 transform -translate-x-1/2 w-[430px] h-[413.27px] z-10 img-bilal">
+        <div className="absolute bottom-[58px] left-1/2 transform -translate-x-1/2 w-[430px] h-[413.27px] z-30 img-bilal">
           <img src="bilal.png" alt="" className="w-full h-full" />
         </div>
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-[116px] bg-white "></div>
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-[116px] bg-white z-20" />
         <div className="w-[1836px] bottom-[116px] absolute left-1/2 transform -translate-x-1/2  ">
           <div className="relative opacity-100">
-            <div className="absolute bottom-0 plants">
+            <div className="absolute bottom-0 plants z-10">
               <img src="tanaman.svg" alt="" />
             </div>
             <div className="absolute bottom-0 right-0 plants">
@@ -222,9 +260,36 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="absolute w-[1100px] h-[273px] bottom-[58px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-180 tambahan">
+          <div>
+            <div className="absolute left-0 top-1/2 ">
+              <img src="circle-white.svg" alt="circle" className="circle" />
+            </div>
+            <div className="absolute left-[154px] top-0  ">
+              <img src="kite-white.svg" alt="" className="layangan" />
+            </div>
+            <div className="absolute left-[180px] bottom-0 cross-spin ">
+              <img src="cross-white.svg" alt="" className="cross-spin" />
+            </div>
+            <div className="absolute right-0 top-1/2 ">
+              <img src="triangle-white.svg" alt="" className="triangle-kanan" />
+            </div>
+
+            <div className="absolute right-[134px] top-0">
+              <img
+                src="circle-white.svg"
+                alt=""
+                className="green-circle-kanan"
+              />
+            </div>
+            <div className="absolute right-[155px] bottom-0   ">
+              <img src="square-white.svg" alt="" className="kotak" />
+            </div>
+          </div>
+        </div>
       </section>
       <section id="portofolio">
-        <div className="min-h-screen">
+        <div className="min-h-screen flex items-center justify-center flex-col">
           <div>
             <h1 className="text-[64px] font-medium text-[#432261] text-center">
               Portofolio
@@ -233,7 +298,7 @@ export default function Home() {
               here some of my work that i made
             </p>
           </div>
-          <div className="mt-[44px]">
+          <div className="mt-[44px] ">
             <div className="flex gap-[22px] items-center justify-center">
               <div className="flex flex-col gap-[20px]">
                 <div className="">
@@ -306,13 +371,17 @@ export default function Home() {
           <MyModal></MyModal>
           <div className="flex gap-[35px]">
             <a href="https://www.instagram.com/bilalarve/" target="_blank">
-              <img src="instagram.svg" alt="" />
+              <img src="instagram.svg" alt="" className="w-[35px] h-[35px]" />
             </a>
             <a href="mailto:arve4me@gmail.com" target="_blank">
-              <img src="email-footer.svg" alt="" />
+              <img
+                src="email-footer.svg"
+                alt=""
+                className="w-[35px] h-[35px]"
+              />
             </a>
             <a href="https://dribbble.com/Arve" target="_blank">
-              <img src="dribble.svg" alt="" />
+              <img src="dribble.svg" alt="" className="w-[35px] h-[35px]" />
             </a>
           </div>
         </div>
@@ -325,6 +394,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-[369px]">
           <img src="brush.svg" alt="" />
         </div>
+
         <div className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
           <div className="w-[1257px] h-[274px] relative">
             <img
