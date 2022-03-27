@@ -37,7 +37,7 @@ export default function Backup() {
         </div>
       </section>
 
-      <section className=" bg-gradient-to-t from-[#744BFF] to-[#9A89FF] ">
+      <section className=" bg-gradient-to-t from-[#7E5BFF] to-[#9A89FF] pb-[111px]">
         <div className="flex flex-col items-center justify-center text-white">
           <h1 className="text-lg font-light">Hello, I am</h1>
           <h1 className="mb-[18px] text-2xl">Muhammad Bilal Arve</h1>
@@ -81,11 +81,9 @@ export default function Backup() {
           </div>
         </div>
       </section>
-
-      <div className="grid grid-cols-1 grid-rows-2">
-        <div className="col-start-1 col-end-2 row-start-1 row-end-2 h-40 w-full bg-purple-500"></div>
+      <div className="grid grid-cols-1 grid-rows-2 ">
+        <div className="col-start-1 col-end-2 row-start-1 row-end-2 h-40 w-full bg-gradient-to-t from-[#744BFF] to-[#7E5BFF]"></div>
         <div className="col-start-1 col-end-2 row-start-2 row-end-3 h-40 w-full bg-white"></div>
-
         <div className="col-start-1 col-end-2 row-start-1 row-end-3 h-[248px] w-full">
           <img
             className="h-full w-full object-contain"
@@ -97,7 +95,7 @@ export default function Backup() {
 
       {/* <img src="bilal.png" alt="" /> */}
 
-      <section>
+      <section className="mb-[111px]">
         <h1 className="text-center text-[22px] font-bold text-[#432261]">
           Portfolio
         </h1>
@@ -122,6 +120,35 @@ export default function Backup() {
             </a>
           </button>
         </div>
+      </section>
+
+      <section className="bg-gradient-to-t from-[#432261] to-[#7436AE]">
+        <h1 className="font-medium text-[18px] text-white leading-[135%] px-[20px] text-center pt-[111px]">if you love and interesting with my work lets collaboration and let me turn your idea into the marvelous illustration</h1>
+        <div className="flex items-center justify-center mt-[18px]">
+<button className="bg-gradient-to-tr from-[#744BFF] to-[#A69DFF] rounded-full">
+          <div className="flex items-center justify-center py-[10px] pl-[20px] px-[12px] gap-[20px]">
+          <p className="font-bold text-[14px] text-white">Let’s Work Together </p>
+          <img src="email-btn2.svg" alt="" />
+          </div>
+        </button>
+        
+        </div>
+<div className="flex items-center justify-center mt-[24px] pb-[253px]">
+          <div className="flex  gap-[35px]">
+
+          <a href="#">
+            <img src="instagram.svg" alt="" className="w-[34px] h-[34px]"/>
+          </a>
+
+          <a href="#">
+            <img src="instagram.svg" alt="" className="w-[34px] h-[34px]"/>
+          </a>
+          <a href="#">
+            <img src="instagram.svg" alt="" className="w-[34px] h-[34px]"/>
+          </a>
+          </div>
+        </div>
+        
       </section>
     </>
   );
