@@ -22,7 +22,6 @@ export default function Home() {
   }
   useEffect(() => {
     const ease3 = Power3.easeOut;
-
     // Section Home
     const tl = new TimelineMax({ ease: ease3 });
     tl.from(".bg-purple-wave", 1, { y: 300, opacity: 0 })
@@ -35,7 +34,6 @@ export default function Home() {
         "-=2"
       )
       .from("#about", 0.5, { y: 100 }, "-=5");
-
     const showIcon = new TimelineMax({ duration: 1 });
     showIcon
       .from(".kotak", { opacity: 0, x: 300, delay: 3.5 }, "img")
@@ -44,7 +42,6 @@ export default function Home() {
       .from(".layangan", { opacity: 0, delay: 2.8, x: -300 }, "img")
       .from(".circle", { opacity: 0, delay: 3.3, x: -300 }, "img")
       .from(".cross-spin", { opacity: 0, delay: 3.5, x: -400 }, "img");
-
     const bounce = new TimelineMax({ ease: ease3 });
     bounce
       .to(
@@ -69,18 +66,15 @@ export default function Home() {
         { y: -12, yoyo: true, duration: 3.5, repeat: -1 },
         "img"
       );
-
     // Section About
     const split = new SplitText("#about-text", {
       type: "lines",
       linesClass: "lineChildren",
     });
-
     const splitParent = new SplitText("#about-text", {
       type: "lines",
       linesClass: "lineParent",
     });
-
     new gsap.timeline({
       ease: ease3,
       scrollTrigger: {
@@ -115,7 +109,6 @@ export default function Home() {
         },
         "-=1"
       );
-
     new gsap.timeline({ ease: ease3 })
       .to(".pot1", 4, { y: -5, yoyo: true, repeat: -1 })
       .to(".pot2", 4, { y: -5, yoyo: true, repeat: -1 });
@@ -123,7 +116,7 @@ export default function Home() {
 
   return (
     <>
-      <section id="home">
+      <section id="home ">
         <div className="relative min-h-screen bg-bottom bg-repeat-x bg-purple-wave">
           <div className="absolute top-[44px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 navbar opacity-100">
             <div className="flex items-center justify-center gap-[47px] text-[#432261]">
@@ -139,11 +132,11 @@ export default function Home() {
               <a href="#contact">Contact</a>
             </div>
           </div>
-          <div className="absolute transform -translate-x-1/2 -translate-y-1/2 bg-white top-1/2 left-1/2">
-            <h1 className="w-[870px] opacity-0  text-center text-[#432261] font-medium text-[64px] hero"></h1>
-            <h1 className="w-[870px] opacity-0  text-center text-[#432261] font-medium text-[64px] hero2"></h1>
+          <div className="absolute transform -translate-x-1/2 -translate-y-1/2 bg-white top-1/2 left-1/2 ">
+            <h1 className="lg:w-[870px] opacity-0  text-center text-[#432261] font-medium lg:text-[64px] hero md:w-[300px] md:text-[30px]"></h1>
+            <h1 className="lg:w-[870px] opacity-0  text-center text-[#432261] font-medium lg:text-[64px] hero2 md:w-[300px] md:text-[30px]"></h1>
           </div>
-          <div className="absolute w-[1166px] h-[273px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute lg:w-[1166px] lg:rotate-0 lg:h-[273px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:rotate-90 md:w-[700px] md:h-[450px]">
             <div>
               <div className="absolute left-0 top-1/2 ">
                 <img src="circle.svg" alt="circle" className="circle" />
@@ -172,20 +165,22 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="about" className="relative overflow-hidden">
+      <section id="about" className="relative overflow-hidden ">
         <div className="min-h-screen bg-gradient-to-t from-[#744BFF] to-[#9A89FF] relative">
           <div>
             <div className="flex flex-col items-center justify-center">
               <h1
                 id="about-text"
-                className="text-[64px] text-white font-light text-center leading-[76px] pt-[24px] mb-[27px]"
+                className="text-[64px] text-white font-light text-center leading-[76px] pt-[24px] mb-[27px] md:text-[50px]"
               >
                 Hello I am <br />
-                <span className="font-medium">Muhammad Bilal Arve</span>
+                <span className="font-medium md:text-[50px]">
+                  Muhammad Bilal Arve
+                </span>
               </h1>
               <p
                 id="about-text"
-                className="text-[24px] text-white max-w-[1135px] text-center"
+                className="text-[24px] text-white max-w-[1135px] text-center md:w-[650px]"
               >
                 I am an illustrator and i have 4 years experience. I really love
                 turn idea into a marvelous illustration and i love exploring
@@ -193,7 +188,7 @@ export default function Home() {
               </p>
               <div
                 id="about-line"
-                className="bg-[#432261] rounded-full mt-[40px] shadow-lg"
+                className="bg-[#432261] rounded-full mt-[40px] shadow-lg md:hidden"
               >
                 <div className="py-[16px] px-[36px] flex items-center justify-center gap-[60px]">
                   <div className="flex items-center desc-about gap-[24px]">
@@ -260,7 +255,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="absolute w-[1100px] h-[273px] bottom-[58px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-180 tambahan">
+        <div className="absolute w-[1100px] h-[273px] bottom-[58px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-180 tambahan md:hidden lg:block">
           <div>
             <div className="absolute left-0 top-1/2 ">
               <img src="circle-white.svg" alt="circle" className="circle" />
@@ -288,7 +283,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="portofolio">
+      <section id="portofolio ">
         <div className="min-h-screen flex items-center justify-center flex-col">
           <div>
             <h1 className="text-[64px] font-medium text-[#432261] text-center">
@@ -299,7 +294,7 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-[44px] ">
-            <div className="flex gap-[22px] items-center justify-center">
+            <div className="flex gap-[22px] items-center justify-center md:w-full md:px-[10px]">
               <div className="flex flex-col gap-[20px]">
                 <div className="">
                   <img
@@ -339,7 +334,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
           <div className="items-center justify-center flex mt-[15px]">
             <button className="bg-gradient-to-tr from-[#744BFF] to-[#A69DFF] rounded-full">
               <a
@@ -353,14 +347,14 @@ export default function Home() {
         </div>
       </section>
       <section
-        className="bg-gradient-to-t from-[#432261] to-[#7436AE] min-h-screen relative"
+        className="bg-gradient-to-t from-[#432261] to-[#7436AE] min-h-screen relative md:overflow-y-hidden"
         id="contact"
       >
         <div
           className="
         flex items-center justify-center flex-col gap-[44px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50"
         >
-          <h1 className="text-white text-[36px] w-[1112px] text-center">
+          <h1 className="text-white text-[36px] w-[1112px] text-center md:w-[700px]">
             if you love and interesting with my work lets collaboration and let
             me turn your idea into the marvelous illustration
           </h1>
@@ -385,17 +379,17 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0">
+        <div className="absolute lg:bottom-0 lg:left-0 md:-bottom-[200px] md:-left-[100px]">
           <img src="pencil.svg" alt="" />
         </div>
-        <div className="absolute bottom-0 right-0">
+        <div className="absolute lg:bottom-0 lg:right-0 md:-bottom-[200px] md:-right-[100px]">
           <img src="paper.svg" alt="" />
         </div>
-        <div className="absolute bottom-0 left-[369px]">
+        <div className="absolute lg:bottom-0 lg:left-[369px] md:hidden lg:block">
           <img src="brush.svg" alt="" />
         </div>
 
-        <div className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+        <div className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 md:hidden">
           <div className="w-[1257px] h-[274px] relative">
             <img
               src="kite.svg"
