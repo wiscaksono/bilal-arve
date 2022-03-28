@@ -9,7 +9,7 @@ body {
 
 @layer components {
   .wrapper {
-    @apply max-w-[1920px] mx-auto w-full;
+    @apply mx-auto w-full max-w-[1920px];
   }
 }
 
@@ -24,11 +24,10 @@ html {
   scroll-behavior: smooth;
 }
 
-
-.lineParent{
+.lineParent {
   overflow: hidden;
 }
 
-.lineChildren{
+.lineChildren {
   transform: translate(0, 500px);
 }
